@@ -9,12 +9,10 @@ import static java.lang.Thread.sleep;
 
 @Slf4j
 @Component
-public class AnalyticsService
-{
+public class AnalyticsService {
 
     @SneakyThrows
-    public void registerNewCustomer(Customer customer)
-    {
+    public void registerNewCustomer(Customer customer) {
         log.info("calling analytics service for customer {}", customer);
         sleep(5_000);
     }

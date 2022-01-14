@@ -1,6 +1,5 @@
 package com.linkedin.events.customer;
 
-import com.linkedin.events.email.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;

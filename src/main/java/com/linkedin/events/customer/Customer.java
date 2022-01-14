@@ -12,9 +12,10 @@ import java.math.BigDecimal;
 @Entity
 @Data
 @NoArgsConstructor
-public class Customer
-{
-    @Id @GeneratedValue
+public class Customer {
+
+    @Id
+    @GeneratedValue
     private Long id;
 
     @Column(unique = true)
@@ -24,8 +25,7 @@ public class Customer
     @Column(columnDefinition = "DECIMAL(2)")
     private BigDecimal rewardPoints;
 
-    public Customer(String email)
-    {
+    public Customer(String email) {
         this.email = email;
     }
 }

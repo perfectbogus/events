@@ -6,11 +6,10 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class TicketService
-{
+public class TicketService {
 
-    public void createTicket(Order order)
-    {
+    public void createTicket(Order order) {
         log.info("Creating ticket for helpdesk service for order {}", order);
     }
+
 }

@@ -14,17 +14,15 @@ import static java.math.BigDecimal.TEN;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class PromotionService
-{
+public class PromotionService {
+
     private final CustomerRepository customerRepository;
 
-    public void applyPromotion(Customer customer)
-    {
+    public void applyPromotion(Customer customer) {
         log.info("Apply free gift for a customer {}", customer);
     }
 
-    public void calculateRewardPoints(Order order)
-    {
+    public void calculateRewardPoints(Order order) {
         Customer customer = order.getCustomer();
 
         //for each order entry (product + quantity) gather reward status points
@@ -34,4 +32,5 @@ public class PromotionService
         customerRepository.save(customer);
         log.info("Customer {}, reward points old: {}, new: {}", customer.getId(), customer.getRewardPoints(), newRewardPoints);
     }
+
 }

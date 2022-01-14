@@ -10,9 +10,10 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Table(name = "ORDERS")
-public class Order
-{
-    @Id @GeneratedValue
+public class Order {
+
+    @Id
+    @GeneratedValue
     private Long id;
 
     private OrderStatus status;
@@ -23,13 +24,11 @@ public class Order
     @ManyToOne
     private Customer customer;
 
-    public Order(OrderStatus status)
-    {
+    public Order(OrderStatus status) {
         this.status = status;
     }
 
-    public enum OrderStatus
-    {
+    public enum OrderStatus {
         SAVED, COMPLETED
     }
 

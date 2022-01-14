@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @Slf4j
-public class EventsApplication
-{
-	public static void main(String[] args) {
-		SpringApplication.run(EventsApplication.class, args);
-	}
+public class EventsApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(EventsApplication.class, args);
+    }
 
 }
