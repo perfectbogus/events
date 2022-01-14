@@ -1,7 +1,7 @@
 package com.linkedin.events.customer;
 
+import com.linkedin.events.email.EmailService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,17 +11,16 @@ public class CustomerService
 
     private final CustomerRepository customerRepository;
 
-    private final ApplicationEventPublisher publisher;
+    private final EmailService emailService;
 
     public void register(Customer customer)
     {
         customerRepository.save(customer);
-        publisher.publishEvent(new CustomerRegisteredEvent(customer));
+        emailService.sendRegisterEmail(customer);
     }
 
     public void remove(Customer customer)
     {
         customerRepository.delete(customer);
-        publisher.publishEvent(new CustomerRemovedEvent(customer));
     }
 }
