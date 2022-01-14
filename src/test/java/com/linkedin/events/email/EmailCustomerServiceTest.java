@@ -14,8 +14,7 @@ import static org.mockito.Mockito.times;
 
 @SpringBootTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class EmailCustomerServiceTest
-{
+class EmailCustomerServiceTest {
     @Autowired
     private CustomerService customerService;
 
@@ -26,8 +25,7 @@ class EmailCustomerServiceTest
     private EmailService emailService;
 
     @Test
-    void registerCustomer_forNewCustomer_sendsAnEmail(){
-
+    void registerCustomer_forNewCustomer_sendsAnEmail() {
         //given
         Customer customer = new Customer("john@email.com");
 
@@ -39,8 +37,7 @@ class EmailCustomerServiceTest
     }
 
     @Test
-    void removeCustomer_forExistingCustomer_sendsAnEmail(){
-
+    void removeCustomer_forExistingCustomer_sendsAnEmail() {
         //given
         Customer customer = new Customer("john@email.com");
         customerRepository.save(customer);
@@ -51,7 +48,5 @@ class EmailCustomerServiceTest
         //then
         then(emailService).should(times(1)).sendCustomerRemovedEmail(customer);
     }
-
-
 
 }
