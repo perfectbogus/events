@@ -24,6 +24,7 @@ public class OrderService {
         orderRepository.save(order);
 
         log.info("Publishing order completed event");
+        publisher.publishEvent(new OrderCompletedEvent(order));
     }
 
 }

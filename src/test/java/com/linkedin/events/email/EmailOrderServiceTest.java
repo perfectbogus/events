@@ -21,8 +21,7 @@ import static org.mockito.Mockito.times;
 @Slf4j
 @SpringBootTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class EmailOrderServiceTest
-{
+class EmailOrderServiceTest {
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -36,20 +35,16 @@ class EmailOrderServiceTest
     private EmailService emailService;
 
     @Test
-    void forPlaceOrder_whenRolledBacked_dontSendEmail()
-    {
+    void forPlaceOrder_whenRolledBacked_dontSendEmail() {
 
         //given
         Customer customer = givenCustomer(90);
         Order order = givenOrder(customer);
 
         //when
-        try
-        {
+        try {
             orderService.placeOrder(order);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             log.error("Exception while placing an order", e);
         }
 
@@ -59,8 +54,7 @@ class EmailOrderServiceTest
     }
 
     @Test
-    void forPlaceOrder_whenCommitSuccessful_sendAnEmail()
-    {
+    void forPlaceOrder_whenCommitSuccessful_sendAnEmail() {
 
         //given
         Customer customer = givenCustomer(50);
@@ -74,20 +68,17 @@ class EmailOrderServiceTest
 
     }
 
-    private Order givenOrder(Customer customer)
-    {
+    private Order givenOrder(Customer customer) {
         Order order = new Order(SAVED);
         order.setCustomer(customer);
         return orderRepository.save(order);
     }
 
-    private Customer givenCustomer(int rewardPoints)
-    {
+    private Customer givenCustomer(int rewardPoints) {
         Customer customer = new Customer("john@email.com");
         customer.setRewardPoints(BigDecimal.valueOf(rewardPoints));
         return customerRepository.save(customer);
     }
-
 
 
 }
