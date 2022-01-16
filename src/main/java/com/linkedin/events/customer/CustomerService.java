@@ -19,5 +19,6 @@ public class CustomerService {
 
     public void remove(Customer customer) {
         customerRepository.delete(customer);
+        publisher.publishEvent(new CustomerRemovedEvent(customer));
     }
 }
