@@ -21,8 +21,7 @@ import static org.mockito.Mockito.times;
 @SpringBootTest
 @Slf4j
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class TicketServiceTest
-{
+class TicketServiceTest {
 
     @Autowired
     private CustomerRepository customerRepository;
@@ -37,20 +36,16 @@ class TicketServiceTest
     private TicketService ticketService;
 
     @Test
-    void forPlaceOrder_whenRolledBacked_createTicket()
-    {
+    void forPlaceOrder_whenRolledBacked_createTicket() {
 
         //given
         Customer customer = givenCustomer(90);
         Order order = givenOrder(customer);
 
         //when
-        try
-        {
+        try {
             orderService.placeOrder(order);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             log.error("Exception while placing an order", e);
         }
 
@@ -59,8 +54,7 @@ class TicketServiceTest
     }
 
     @Test
-    void forPlaceOrder_whenCommitSuccessful_dontCreateTicket()
-    {
+    void forPlaceOrder_whenCommitSuccessful_dontCreateTicket() {
 
         //given
         Customer customer = givenCustomer(50);
@@ -73,15 +67,13 @@ class TicketServiceTest
         then(ticketService).shouldHaveNoInteractions();
     }
 
-    private Order givenOrder(Customer customer)
-    {
+    private Order givenOrder(Customer customer) {
         Order order = new Order(SAVED);
         order.setCustomer(customer);
         return orderRepository.save(order);
     }
 
-    private Customer givenCustomer(int rewardPoints)
-    {
+    private Customer givenCustomer(int rewardPoints) {
         Customer customer = new Customer("john@email.com");
         customer.setRewardPoints(BigDecimal.valueOf(rewardPoints));
         return customerRepository.save(customer);
